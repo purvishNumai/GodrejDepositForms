@@ -3,19 +3,14 @@ frontend:
   phases:
     preBuild:
       commands:
-        - curl -fsSL https://get.pnpm.io/install.sh | sh  # Install PNPM
-        - export PNPM_HOME="$HOME/.local/share/pnpm"
-        - export PATH="$PNPM_HOME:$PATH"
-        - corepack enable
-        - pnpm install  # Install dependencies
+        - npm install  # Use npm instead of pnpm
     build:
       commands:
-        - pnpm run build  # Build your project
+        - npm run build  # Build the project
   artifacts:
-    baseDirectory: dist  # Change if your build output is different
+    baseDirectory: dist  # Adjust this based on your build output directory
     files:
       - '**/*'
   cache:
     paths:
       - node_modules/**/*
-      - .pnpm-store/**/*
