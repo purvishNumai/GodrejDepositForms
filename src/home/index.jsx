@@ -52,19 +52,20 @@ const Home = ({ children, signOut }) => {
 
       setUploadMessage("success");
 
-      const response = await fetch('https://34.228.115.185/form', {
+      const response = await fetch('/api/form', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ filePath: result.path })
       });
 
       if (!response.ok) throw new Error('Failed to fetch JSON data');
 
-      const data = await response.json();
+      let data = await response.json();
+      data = JSON.parse(data);
       console.log('data=',JSON.stringify(data))
-      setJsonData(data);
-      // const initialData = [{ "amount": "50000", "amount_in_words": "FIFTY THOUSAND ONLY", "dd_no": "12346", "dated": "11/03/2025", "drawn_on_bank_branch": "KORAMANGALA", "first_applicant_name": "GARY FIRSTEN", "first_applicant_pan": "A3C 3456", "applicant_dob": "01/611994 ", "applicant_guardian": "ALEX PETER!", "applicant_address": null, "applicant_pin": "560068", "applicant_mobile": "98808756121", "applicant_saving_account": "2123456738" }];
-      // setJsonData(initialData[0]);
+      setJsonData(data[0]);      
       setFile(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (error) {

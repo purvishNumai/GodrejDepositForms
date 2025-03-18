@@ -11,8 +11,25 @@ const DynamicForm = ({ jsonData, onUpdate }) => {
     onUpdate(updatedData);
   };
 
-  const handleApprove = () => {
-    console.log('Approved Data:', formData);
+  const handleApprove = async () => {
+    try {
+      const response = await fetch('/api/table_insert', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ table_data: formData }) // Use formData instead of result.path
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to insert data: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      console.log('API Response:', data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
