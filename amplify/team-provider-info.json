@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-godrejdepositforms-dev-bad73-authRole",
+      "UnauthRoleArn": "arn:aws:iam::747905868571:role/amplify-godrejdepositforms-dev-bad73-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::747905868571:role/amplify-godrejdepositforms-dev-bad73-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-godrejdepositforms-dev-bad73-deployment",
+      "UnauthRoleName": "amplify-godrejdepositforms-dev-bad73-unauthRole",
+      "StackName": "amplify-godrejdepositforms-dev-bad73",
+      "StackId": "arn:aws:cloudformation:ap-south-1:747905868571:stack/amplify-godrejdepositforms-dev-bad73/310c5670-03ed-11f0-b703-06ce201e4af5",
+      "AmplifyAppId": "dbxfla7denhwn"
+    },
+    "categories": {
+      "auth": {
+        "godrejdepositforms36f401e1": {}
+      },
+      "storage": {
+        "godrejdepositforms": {}
+      }
+    }
+  }
+}
