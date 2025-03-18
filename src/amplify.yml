@@ -3,14 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install  # ✅ Ensure it uses npm instead of pnpm
+        - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+        - apt-get install -y nodejs
+        - npm install  # ✅ This ensures npm is used
     build:
       commands:
         - npm run build
-  artifacts:
-    baseDirectory: dist  # Adjust this if your output folder is different
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
