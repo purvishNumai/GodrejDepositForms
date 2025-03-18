@@ -3,9 +3,16 @@ frontend:
   phases:
     preBuild:
       commands:
-        - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-        - apt-get install -y nodejs
-        - npm install  # ✅ This ensures npm is used
+        - corepack enable
+        - corepack prepare pnpm@latest --activate
+        - pnpm install
     build:
       commands:
-        - npm run build
+        - pnpm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/.pnpm-store
