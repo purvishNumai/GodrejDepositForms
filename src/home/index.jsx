@@ -92,7 +92,7 @@ const Home = ({ children, signOut }) => {
       <Flex direction="column" height="100vh">
         <View backgroundColor={tokens.colors.primary[80]} padding={tokens.space.medium} as="header">
           <Flex justifyContent="space-between" alignItems="center">
-            <Heading level={3} color={tokens.colors.white}>Godrej Deposit Form</Heading>
+            <Heading level={3} color={tokens.colors.white}>Deposit App - Demo</Heading>
             <Button onClick={signOut}>Sign Out</Button>
           </Flex>
         </View>
@@ -149,7 +149,7 @@ const Home = ({ children, signOut }) => {
 
         <View backgroundColor={tokens.colors.neutral[20]} padding={tokens.space.medium} as="footer">
           <Flex justifyContent="space-between" alignItems="center">
-            <Text>&copy; {new Date().getFullYear()} Godrej Deposit Form</Text>
+            <Text>&copy; {new Date().getFullYear()} Deposit App - Demo</Text>
             <Flex gap={tokens.space.large}>
               <Text>Privacy Policy</Text>
               <Text>Terms of Service</Text>
