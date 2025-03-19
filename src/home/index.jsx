@@ -92,7 +92,7 @@ const Home = ({ children, signOut }) => {
       <Flex direction="column" height="100vh">
         <View backgroundColor={tokens.colors.primary[80]} padding={tokens.space.medium} as="header">
           <Flex justifyContent="space-between" alignItems="center">
-            <Heading level={3} color={tokens.colors.white}>Godrej Deposite Form</Heading>
+            <Heading level={3} color={tokens.colors.white}>Godrej Deposit Form</Heading>
             <Button onClick={signOut}>Sign Out</Button>
           </Flex>
         </View>
@@ -138,7 +138,7 @@ const Home = ({ children, signOut }) => {
 
             {jsonData && (
               <View marginTop="30px" className="dynamic-form-container">
-                <div style={{ color: 'black' }}>Dynamic JSON Form</div>
+                <div style={{ color: 'black' }}>Please verify the fields and Approve</div>
                 <DynamicForm jsonData={jsonData} onUpdate={handleUpdate} />
                 <pre>{JSON.stringify(jsonData, null, 2)}</pre>
               </View>
@@ -148,7 +148,7 @@ const Home = ({ children, signOut }) => {
 
         <View backgroundColor={tokens.colors.neutral[20]} padding={tokens.space.medium} as="footer">
           <Flex justifyContent="space-between" alignItems="center">
-            <Text>&copy; {new Date().getFullYear()} Godrej Deposite Form</Text>
+            <Text>&copy; {new Date().getFullYear()} Godrej Deposit Form</Text>
             <Flex gap={tokens.space.large}>
               <Text>Privacy Policy</Text>
               <Text>Terms of Service</Text>
