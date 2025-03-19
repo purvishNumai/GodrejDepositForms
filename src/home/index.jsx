@@ -117,6 +117,7 @@ const Home = ({ children, signOut }) => {
 
             {file && <Text marginTop="10px">Selected file: {file.name}</Text>}
             <Button onClick={handleUpload} variation="primary" marginTop="20px">Upload File</Button>
+            <div style={{ paddingTop: "20px" }}></div>
 
             {uploadMessage === "success" && (
               <Message isDismissible={true} colorTheme="success">

@@ -60,7 +60,7 @@ const DynamicForm = ({ jsonData, onUpdate }) => {
       <Button onClick={handleApprove} variation="primary" marginTop="20px" isDisabled={loading}>
         {loading ? "Saving..." : "Approve"}
       </Button>
-
+      <div style={{ paddingTop: "20px" }}></div>
       {loading && (
         <Message isDismissible={false} colorTheme="info">
           ⏳ Entering data, please wait... <span className="spinner"></span>
