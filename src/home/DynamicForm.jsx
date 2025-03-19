@@ -23,7 +23,7 @@ const DynamicForm = ({ jsonData, onUpdate }) => {
     setUploadMessage(null);
 
     try {
-      const response = await fetch('/api/table_insert', {
+      const response = await fetch('https://34.228.115.185/table_insert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ table_data: formData })

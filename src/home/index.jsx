@@ -61,7 +61,7 @@ const Home = ({ children, signOut }) => {
 
       showMessage("success");
 
-      const response = await fetch('/api/form', {
+      const response = await fetch('https://34.228.115.185/form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filePath: result.path })
