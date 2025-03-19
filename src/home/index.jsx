@@ -11,6 +11,8 @@ const Home = ({ children, signOut }) => {
   const [activeButton, setActiveButton] = useState("dashboard");
   const [file, setFile] = useState(null);
   const [uploadMessage, setUploadMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const fileInputRef = useRef(null);
   const [jsonData, setJsonData] = useState(null);
 
@@ -35,11 +37,17 @@ const Home = ({ children, signOut }) => {
     return `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
   };
 
+  const showMessage = (msg, duration = 3000) => {
+    setUploadMessage(msg);
+    setTimeout(() => setUploadMessage(null), duration);
+  };
+
   const handleUpload = async () => {
     if (!file) return;
 
     setUploadMessage(null);
     setJsonData(null);
+    setLoading(true);  // Start loading spinner
 
     const fileName = `${getFormattedDateTime()}_${file.name}`;
 
@@ -50,27 +58,27 @@ const Home = ({ children, signOut }) => {
         options: { onProgress: (progress) => console.log(`Progress: ${progress.loaded}/${progress.total}`) }
       }).result;
 
-      setUploadMessage("success");
+
+      showMessage("success");
 
       const response = await fetch('/api/form', {
         method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filePath: result.path })
       });
 
       if (!response.ok) throw new Error('Failed to fetch JSON data');
 
       let data = await response.json();
+      setLoading(false); // Stop loading
       data = JSON.parse(data);
-      console.log('data=',JSON.stringify(data))
-      setJsonData(data[0]);      
+      setJsonData(data[0]);
       setFile(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (error) {
       console.error("Error:", error);
-      setUploadMessage("error");
+      setLoading(false); // Stop loading
+      showMessage("error", 5000);
     }
   };
 
@@ -84,7 +92,7 @@ const Home = ({ children, signOut }) => {
       <Flex direction="column" height="100vh">
         <View backgroundColor={tokens.colors.primary[80]} padding={tokens.space.medium} as="header">
           <Flex justifyContent="space-between" alignItems="center">
-            <Heading level={3} color={tokens.colors.white}>My Amplify App</Heading>
+            <Heading level={3} color={tokens.colors.white}>Godrej Deposite Form</Heading>
             <Button onClick={signOut}>Sign Out</Button>
           </Flex>
         </View>
@@ -93,8 +101,8 @@ const Home = ({ children, signOut }) => {
           <View width="250px" backgroundColor={tokens.colors.neutral[10]} padding={tokens.space.medium} as="aside">
             <Heading level={5} marginBottom={tokens.space.medium}>Navigation</Heading>
             <Flex direction="column" gap={tokens.space.small}>
-              <Button variation="link" style={getButtonStyle("dashboard")} onClick={() => handleNavigation("dashboard")}>Dashboard</Button>
-              <Button variation="link" style={getButtonStyle("settings")} onClick={() => handleNavigation("settings")}>Settings</Button>
+              <Button variation="link" style={getButtonStyle("dashboard")} onClick={() => handleNavigation("dashboard")}>Process Image</Button>
+              {/* <Button variation="link" style={getButtonStyle("settings")} onClick={() => handleNavigation("settings")}>Settings</Button> */}
             </Flex>
           </View>
 
@@ -110,8 +118,23 @@ const Home = ({ children, signOut }) => {
             {file && <Text marginTop="10px">Selected file: {file.name}</Text>}
             <Button onClick={handleUpload} variation="primary" marginTop="20px">Upload File</Button>
 
-            {uploadMessage === "success" && <Message isDismissible={true} colorTheme="success">File uploaded successfully!</Message>}
-            {uploadMessage === "error" && <Message isDismissible={true} colorTheme="error">Error uploading file.</Message>}
+            {uploadMessage === "success" && (
+              <Message isDismissible={true} colorTheme="success">
+                ✅ File uploaded successfully!
+              </Message>
+            )}
+
+            {uploadMessage === "error" && (
+              <Message isDismissible={true} colorTheme="error">
+                ❌ Error uploading file.
+              </Message>
+            )}
+
+            {loading && (
+              <Message isDismissible={false} colorTheme="info">
+                ⏳ "Processing uploaded file ... <span className="spinner"></span>
+              </Message>
+            )}
 
             {jsonData && (
               <View marginTop="30px" className="dynamic-form-container">
@@ -125,7 +148,7 @@ const Home = ({ children, signOut }) => {
 
         <View backgroundColor={tokens.colors.neutral[20]} padding={tokens.space.medium} as="footer">
           <Flex justifyContent="space-between" alignItems="center">
-            <Text>&copy; {new Date().getFullYear()} My Amplify App</Text>
+            <Text>&copy; {new Date().getFullYear()} Godrej Deposite Form</Text>
             <Flex gap={tokens.space.large}>
               <Text>Privacy Policy</Text>
               <Text>Terms of Service</Text>
