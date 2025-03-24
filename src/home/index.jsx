@@ -58,7 +58,7 @@ const Home = ({ children, signOut }) => {
         options: { onProgress: (progress) => console.log(`Progress: ${progress.loaded}/${progress.total}`) }
       }).result;
 
-
+      console.log('result=',JSON.stringify(result))
       showMessage("success");
 
       const response = await fetch('https://34.228.115.185/form', {
