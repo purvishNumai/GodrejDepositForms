@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-godrejdepositforms-dev-bad73-authRole",
-      "UnauthRoleArn": "arn:aws:iam::747905868571:role/amplify-godrejdepositforms-dev-bad73-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::747905868571:role/amplify-godrejdepositforms-dev-bad73-authRole",
+      "AuthRoleName": "amplify-godrejdepositforms-dev-04f09-authRole",
+      "UnauthRoleArn": "arn:aws:iam::340640776055:role/amplify-godrejdepositforms-dev-04f09-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::340640776055:role/amplify-godrejdepositforms-dev-04f09-authRole",
       "Region": "ap-south-1",
-      "DeploymentBucketName": "amplify-godrejdepositforms-dev-bad73-deployment",
-      "UnauthRoleName": "amplify-godrejdepositforms-dev-bad73-unauthRole",
-      "StackName": "amplify-godrejdepositforms-dev-bad73",
-      "StackId": "arn:aws:cloudformation:ap-south-1:747905868571:stack/amplify-godrejdepositforms-dev-bad73/310c5670-03ed-11f0-b703-06ce201e4af5",
-      "AmplifyAppId": "dbxfla7denhwn"
+      "DeploymentBucketName": "amplify-godrejdepositforms-dev-04f09-deployment",
+      "UnauthRoleName": "amplify-godrejdepositforms-dev-04f09-unauthRole",
+      "StackName": "amplify-godrejdepositforms-dev-04f09",
+      "StackId": "arn:aws:cloudformation:ap-south-1:340640776055:stack/amplify-godrejdepositforms-dev-04f09/c9a9c3d0-0899-11f0-9bba-0214f95a464f",
+      "AmplifyAppId": "d4m20m0jokfhd"
     },
     "categories": {
       "auth": {
-        "godrejdepositforms36f401e1": {}
+        "godrejdepositforms7ad2bfed": {}
       },
       "storage": {
         "godrejdepositforms": {}
